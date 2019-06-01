@@ -1,0 +1,22 @@
+{
+  "name": "transactionprocessor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nextbill-jeff/transactionProcessor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nextbill-jeff/transactionProcessor/issues"
+  },
+  "homepage": "https://github.com/nextbill-jeff/transactionProcessor#readme",
+  "dependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
