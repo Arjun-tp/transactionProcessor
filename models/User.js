@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
 
 //Create Schema
 const UserSchema = new Schema({
@@ -29,10 +30,11 @@ const UserSchema = new Schema({
     },
 	email : {
 		type: String,
-		required: true
+        required: true,
+        unique: true
     },
     phone : {
-        type : Number,
+        type : String,
         required :true
     },
     location : {
@@ -42,13 +44,15 @@ const UserSchema = new Schema({
 		type: String
 	},
 	bWalletBalance : {
-		type: Number
+        type: Number,
+        default : 0
 	},
 	eWalletId : {
 		type: String
     },
     eWalletBalance : {
-		type: String
+        type: Number,
+        default : 0
 	},
 	maxAmountAllowed : {
 		type: Number,
@@ -59,7 +63,16 @@ const UserSchema = new Schema({
 		type : Date,
 		default : Date.now
 	}
-})
+});
+
+UserSchema.pre('save', async function(next) {
+    if(!this.email || !this.password) {
+        return next(new Error("email and password are mandatory fields"));
+    }
+    this.email = this.email.toLowerCase();
+    this.password = bcrypt.hashSync(this.password, 10);
+    next();
+});
 
 
 

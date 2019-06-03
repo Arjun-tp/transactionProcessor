@@ -4,11 +4,12 @@ const Schema = mongoose.Schema
 //Create Schema
 const TransactionSchema = new Schema({
     currencyAmount : {
-        type: String,
+        type: Number,
 		required: true        
     },
     currencyType : {
         type: String,
+        enum: ['etherium', 'bitcoin'],
 		required: true        
 	},
 	sourceUserId: {
@@ -24,6 +25,10 @@ const TransactionSchema = new Schema({
     },
     dateProcessed : {
         type: Date
+    },
+    transactionId : {
+        type: String,
+        required : true
     },
     transactionState : {
         type : String,

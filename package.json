@@ -4,19 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nextbill-jeff/transactionProcessor.git"
+    "url": "git+https://github.com/Arjun-tp/transactionProcessor.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nextbill-jeff/transactionProcessor/issues"
+    "url": "https://github.com/Arjun-tp/transactionProcessor/issues"
   },
-  "homepage": "https://github.com/nextbill-jeff/transactionProcessor#readme",
+  "homepage": "https://github.com/Arjun-tp/transactionProcessor#readme",
   "dependencies": {
-    "nodemon": "^1.19.1"
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.5.12",
+    "node-uuid": "^1.4.8",
+    "nodemon": "^1.19.1",
+    "p-queue": "^5.0.0",
+    "uniqid": "^5.0.3"
   }
 }
