@@ -80,8 +80,8 @@ router.post("/", async (req, res) => {
 
 
 
-// @route POST api/transaction/addMoneyToWallet
-// @desc Register user
+// @route PUT api/transaction/addMoneyToWallet
+// @desc Add money to wallet
 // @access Public
 
 router.put("/addMoneyToWallet",(req, res) => {
@@ -94,6 +94,31 @@ router.put("/addMoneyToWallet",(req, res) => {
                 })
             }else if(req.body.bWalletBalance){
                 UserModel.updateOne({ _id: req.body.id}, { $set: { bWalletBalance: userResponse.bWalletBalance + req.body.bWalletBalance }})
+            .then((response) => {
+                return res.send({success : true, Result : response})
+            })
+            }
+        })
+    }catch(err){
+        return res.send({success : false, Error : err})
+    }
+})
+
+
+// @route PUT api/transaction/updateWalletId
+// @desc Update wallet ID
+// @access Public
+
+router.put("/updateWalletId",(req, res) => {
+    try{
+        UserModel.findOne({_id : req.body.id}).then((userResponse) => {
+            if(req.body.eWalletId){
+                UserModel.updateOne({ _id: req.body.id}, { $set: { eWalletId: req.body.eWalletId }})
+                .then((response) => {
+                    return res.send({success : true, Result : response})
+                })
+            }else if(req.body.bWalletId){
+                UserModel.updateOne({ _id: req.body.id}, { $set: { bWalletId: req.body.bWalletId }})
             .then((response) => {
                 return res.send({success : true, Result : response})
             })
