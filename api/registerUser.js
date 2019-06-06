@@ -59,7 +59,7 @@ const authenticate = (req, res, next) => {
         });
     });
 }
-// @route POST api/registerUser/login
+// @route POST api/registerUser/register
 // @desc Register user
 // @access Public
 router.post("/register", async (req, res) => {
@@ -81,7 +81,11 @@ router.post("/register", async (req, res) => {
                 password :req.body.password,
                 email: req.body.email,
                 location: req.body.location,
-                phone: req.body.phone
+                phone: req.body.phone,
+                eWalletBalance : req.body.eWalletBalance || 0,
+                eWalletId : req.body.eWalletId || '',
+                bWalletId : req.body.bWalletId || '',
+                bWalletBalance : req.body.bWalletBalance || 0
             });
             const userResponse = await newUser.save();
             if (userResponse) {
@@ -108,6 +112,11 @@ router.post("/register", async (req, res) => {
         });
     }
 });
+
+
+// @route POST api/registerUser/login
+// @desc Login user
+// @access Public
 
 router.post('/login', async (req, res) => {
     try {

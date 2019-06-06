@@ -4,7 +4,7 @@ let express = req();
 let mongoose = require('mongoose');
 var cors = require('cors');
 // let router = req.Router();
-let config    = require('./config/development'); //change db to developmentConsumer
+let config    = require('./config/development'); 
 
 let registerUser = require('./api/registerUser');
 const transaction = require('./api/transaction');
@@ -22,8 +22,6 @@ express.use(bodyParser.json());
 
 // Authenticate the headers middleware
 express.use(registerUser.authenticate);
-
-
 
 mongoose.connection.on('connected', function () {
     console.log('channel connected -----');
