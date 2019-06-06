@@ -41,14 +41,16 @@ const UserSchema = new Schema({
         type: String
     },
 	bWalletId : {
-		type: String
+        type: String,
+        unique: true
 	},
 	bWalletBalance : {
         type: Number,
         default : 0
 	},
 	eWalletId : {
-		type: String
+        type: String,
+        unique: true
     },
     eWalletBalance : {
         type: Number,
